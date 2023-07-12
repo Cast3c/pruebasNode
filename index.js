@@ -28,6 +28,7 @@ app.use(express.json());
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :addNote'))
 app.use(cors())
 app.use(requestLogger)
+app.use(express.static('build'))
 
 
 let notes = [
@@ -102,6 +103,7 @@ app.post("/api/notes", (request, response) => {
 });
 
 app.use(unknownEndpoint)
+
 
 const PORT =  process.env.PORT || 3001;
 app.listen(PORT, () => {
